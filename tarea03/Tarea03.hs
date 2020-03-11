@@ -56,3 +56,11 @@ module Tarea03 where
     remdups :: (Eq a)=> [a] -> [a]
     remdups l = foldr (\x rec -> if x==(head rec) then rec else (x:rec)) [(last l)] l
     
+    --Produce todas las posibles rotaciones de una lista.
+    rotate :: [a] -> [[a]]
+    rotate xs = init $ foldr (\_ rec -> (shift (head rec)):rec) [xs] xs
+
+    --Rota una lista dada a la izquierda
+    shift :: [a] -> [a]
+    shift []     = []
+    shift (x:xs) = xs++[x]
